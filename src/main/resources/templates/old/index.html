@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee</title>
+<script src="/assets/jquery/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/assets/fomantic-ui-css/semantic.min.css">
+<script src="/assets/fomantic-ui-css/semantic.min.js"></script>
+<style>
+</style>
+</head>
+<body>
+	<div class="ui inverted menu">
+		<a class="active item">Home</a>
+		<a class="item">Messages</a>
+		<a class="item">About</a>
+	</div>
+<div class="ui container" align="center">
+<h3>Employee Management System</h3>
+<a th:href="@{/addnew}" class="ui primary button" >Add Employee</a>
+	<br><br>
+	<table style="width:80%" border="1" class = "ui unstackable table">
+	<thead>
+<tr>
+	<th>Name</th>
+	<th>Email</th>
+	<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="employee:${allemplist}">
+		<td class="right aligned" th:text="${employee.name}"></td>
+		<td class="right aligned" th:text="${employee.email}"></td>
+		<td class="right aligned">
+			<a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary">Update</a>
+			<a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger">Delete</a>
+		</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
